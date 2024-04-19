@@ -1,13 +1,11 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
 import os
 
 TO = "ricardorr7@al.insper.edu.br"
 CC = ""
-def send_email(title: str, body: str, attachment_content, filename):
+def send_email(title: str, body: str):
     gmail_smtp = 'smtp.gmail.com'
     port = 587  # TLS
     smtp_user = os.environ.get('EMAIL_USER')
@@ -26,13 +24,6 @@ def send_email(title: str, body: str, attachment_content, filename):
 
     # Add body to email
     msg.attach(Body)
-    
-    # Using Shutil to Zip a Directory
-    part = MIMEBase("application", "octet-stream")
-    part.set_payload(attachment_content)
-    encoders.encode_base64(part)
-    part.add_header("Content-Disposition", f"attachment; filename={filename}")
-    msg.attach(part)
 
     servidor = smtplib.SMTP(gmail_smtp, port)
     servidor.starttls()
