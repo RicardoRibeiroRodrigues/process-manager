@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 import os
 
 TO = "ricardorr7@al.insper.edu.br"
-CC = ""
+CC = "pedroa3@al.insper.edu.br,jorascco@al.insper.edu.br,renatolf1@al.insper.edu.br"
 def send_email(title: str, body: str):
     gmail_smtp = 'smtp.gmail.com'
     port = 587  # TLS

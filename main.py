@@ -8,7 +8,7 @@ from send_mail import send_email
 from dotenv import load_dotenv
 
 PROC_LIST_FILE = 'processes.txt'
-N_MINUTES_TO_POLL = 2
+N_MINUTES_TO_POLL = 5
 
 
 def poll_processes():
@@ -52,7 +52,7 @@ def remove_finished_processes(procs_to_remove):
     with open(PROC_LIST_FILE, 'w') as file:
         for index, line in enumerate(lines):
             if index not in procs_to_remove:
-                file.write(line)
+                file.write(line + '\n')
 
 if __name__ == '__main__':
     load_dotenv()
